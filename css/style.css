@@ -1,0 +1,1737 @@
+/* =========================================
+   MUNICIPAL ASSESSOR'S OFFICE - OAS, ALBAY
+   Professional Government Website Design
+========================================= */
+
+/* 1. Global Styles */
+:root {
+    --primary: #12345a;
+    --primary-dark: #0b2340;
+    --primary-light: #eaf1f8;
+    --accent: #d6ad55;
+    --accent-light: #f7f0df;
+    --text: #263447;
+    --muted: #64748b;
+    --background: #f4f7fb;
+    --white: #ffffff;
+    --border: #dfe6ee;
+    --success: #18794e;
+    --shadow: 0 8px 28px rgba(18, 52, 90, 0.07);
+    --radius: 14px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--text);
+    background: var(--background);
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    transition: color 0.25s ease,
+                background-color 0.25s ease;
+}
+
+::selection {
+    color: var(--white);
+    background: var(--primary);
+}
+
+/* 2. Main Header */
+header {
+    position: relative;
+    overflow: hidden;
+    padding: 68px 24px 62px;
+    text-align: center;
+    color: var(--white);
+    background:
+        radial-gradient(
+            circle at 85% 15%,
+            rgba(214, 173, 85, 0.15),
+            transparent 32%
+        ),
+        linear-gradient(
+            135deg,
+            var(--primary-dark),
+            var(--primary) 65%,
+            #214b76
+        );
+    border-bottom: 5px solid var(--accent);
+}
+
+header::before {
+    content: "";
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    top: -145px;
+    left: -75px;
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 50%;
+    box-shadow:
+        0 0 0 25px rgba(255, 255, 255, 0.025),
+        0 0 0 50px rgba(255, 255, 255, 0.02);
+    pointer-events: none;
+}
+
+header h1 {
+    position: relative;
+    margin: 0 auto 12px;
+    max-width: 900px;
+    font-size: clamp(2rem, 4vw, 3.1rem);
+    font-weight: 750;
+    line-height: 1.2;
+    letter-spacing: -1px;
+}
+
+header p {
+    position: relative;
+    margin: 0;
+    color: #e0e9f3;
+    font-size: 1.08rem;
+    letter-spacing: 0.5px;
+}
+
+/* 3. Navigation Bar */
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    flex-wrap: wrap;
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 4px 14px rgba(18, 52, 90, 0.06);
+}
+
+nav a {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 17px 20px;
+    color: var(--primary);
+    text-decoration: none;
+    font-size: 0.91rem;
+    font-weight: 650;
+    transition: color 0.25s ease,
+                background-color 0.25s ease;
+}
+
+nav a::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 20px;
+    right: 20px;
+    height: 3px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transition: transform 0.25s ease;
+}
+
+nav a:hover,
+nav a:focus-visible {
+    color: var(--primary-dark);
+    background: #f6f8fb;
+}
+
+nav a:hover::after,
+nav a:focus-visible::after {
+    transform: scaleX(1);
+}
+
+/* 4. Main Content Container */
+.container {
+    width: min(1100px, calc(100% - 40px));
+    margin: 44px auto 60px;
+}
+
+/* 5. Content Cards */
+.card {
+    position: relative;
+    margin-bottom: 28px;
+    padding: 34px 38px;
+    overflow: hidden;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    transition: transform 0.25s ease,
+                box-shadow 0.25s ease,
+                border-color 0.25s ease;
+    scroll-margin-top: 90px;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    border-color: #c9d6e5;
+    box-shadow: 0 14px 35px rgba(18, 52, 90, 0.10);
+}
+
+/* 6. Section Headings */
+h2 {
+    position: relative;
+    margin: 0 0 24px;
+    padding: 0 0 16px;
+    color: var(--primary);
+    border-bottom: 1px solid var(--border);
+    font-size: clamp(1.35rem, 2.5vw, 1.8rem);
+    font-weight: 750;
+    line-height: 1.4;
+    letter-spacing: -0.4px;
+}
+
+h2::after {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 72px;
+    height: 4px;
+    background: var(--accent);
+    border-radius: 4px;
+}
+
+p {
+    margin: 0 0 18px;
+}
+
+.card > p:last-child {
+    margin-bottom: 0;
+}
+
+strong {
+    color: var(--primary-dark);
+    font-weight: 700;
+}
+
+/* 7. Ordered List / Procedures */
+ol {
+    list-style: none;
+    counter-reset: procedure;
+    margin: 0;
+    padding: 0;
+}
+
+ol li {
+    position: relative;
+    counter-increment: procedure;
+    margin: 0 0 16px;
+    padding: 17px 20px 17px 64px;
+    background: #f7f9fc;
+    border: 1px solid #e7edf4;
+    border-radius: 10px;
+    transition: background-color 0.2s ease,
+                border-color 0.2s ease;
+}
+
+ol li:last-child {
+    margin-bottom: 0;
+}
+
+ol li::before {
+    content: counter(procedure, decimal-leading-zero);
+    position: absolute;
+    left: 18px;
+    top: 17px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    color: var(--white);
+    background: var(--primary);
+    border-radius: 8px;
+    font-size: 0.78rem;
+    font-weight: 750;
+}
+
+ol li:hover {
+    background: var(--primary-light);
+    border-color: #cfdae8;
+}
+
+/* 8. Unordered List / Requirements */
+ul {
+    margin: 0 0 22px;
+    padding-left: 0;
+    list-style: none;
+}
+
+ul li {
+    position: relative;
+    margin-bottom: 12px;
+    padding-left: 30px;
+}
+
+ul li::before {
+    content: "";
+    position: absolute;
+    top: 11px;
+    left: 4px;
+    width: 9px;
+    height: 9px;
+    background: var(--accent);
+    border-radius: 3px;
+    transform: rotate(45deg);
+}
+
+ul li:last-child {
+    margin-bottom: 0;
+}
+
+/* 9. Certification Fee Badge */
+.fee-badge {
+    display: inline-block;
+    margin: 0 5px;
+    padding: 5px 13px;
+    color: var(--success);
+    background: #e7f5ed;
+    border: 1px solid #c7e8d5;
+    border-radius: 7px;
+    font-size: 1rem;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+/* 10. Contact Information */
+#contact p {
+    margin-bottom: 14px;
+}
+
+#contact p strong {
+    display: inline-block;
+    min-width: 145px;
+}
+
+#contact p:last-child {
+    margin-bottom: 0;
+}
+
+#contact p strong + a,
+#contact p a {
+    color: #1767a5;
+    font-weight: 600;
+    text-decoration: none;
+    overflow-wrap: anywhere;
+}
+
+#contact p a:hover {
+    color: var(--primary-dark);
+    text-decoration: underline;
+}
+
+/* 11. Footer */
+footer {
+    padding: 30px 20px;
+    text-align: center;
+    color: #d8e2ee;
+    background: var(--primary-dark);
+    border-top: 4px solid var(--accent);
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.8;
+}
+
+footer a {
+    color: #f0cf85;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* 12. Keyboard Accessibility */
+a:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 4px;
+}
+
+/* 13. Tablet Layout */
+@media (max-width: 768px) {
+    header {
+        padding: 52px 20px 45px;
+    }
+
+    header h1 {
+        letter-spacing: -0.5px;
+    }
+
+    nav {
+        position: relative;
+        gap: 0;
+    }
+
+    nav a {
+        flex: 1 1 40%;
+        padding: 14px 10px;
+        text-align: center;
+    }
+
+    nav a::after {
+        left: 15px;
+        right: 15px;
+    }
+
+    .container {
+        width: calc(100% - 30px);
+        margin: 28px auto 40px;
+    }
+
+    .card {
+        padding: 26px 24px;
+        margin-bottom: 22px;
+    }
+}
+
+/* 14. Mobile Layout */
+@media (max-width: 480px) {
+    body {
+        font-size: 15px;
+        line-height: 1.75;
+    }
+
+    header {
+        padding: 42px 16px 38px;
+    }
+
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    header p {
+        font-size: 0.95rem;
+    }
+
+    nav a {
+        flex-basis: 50%;
+        padding: 12px 6px;
+        font-size: 0.82rem;
+    }
+
+    .container {
+        width: calc(100% - 24px);
+        margin: 22px auto 32px;
+    }
+
+    .card {
+        padding: 23px 18px;
+        margin-bottom: 18px;
+        border-radius: 11px;
+    }
+
+    h2 {
+        font-size: 1.3rem;
+        margin-bottom: 20px;
+    }
+
+    ol li {
+        padding: 15px 14px 15px 53px;
+    }
+
+    ol li::before {
+        left: 12px;
+        top: 16px;
+        width: 29px;
+        height: 29px;
+    }
+
+    ul li {
+        padding-left: 25px;
+    }
+
+    #contact p strong {
+        display: block;
+        min-width: 0;
+        margin-bottom: 2px;
+    }
+
+    footer {
+        padding: 24px 16px;
+    }
+}
+
+/* 15. Respect Reduced Motion Preferences */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+    }
+}
+
+
+/* Header layout */
+.site-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    padding: 30px 20px;
+    min-height: 150px;
+    color: white;
+    text-align: center;
+    background: linear-gradient(135deg, #0b2340, #214b76);
+    border-bottom: 5px solid #d6ad55;
+}
+
+/* Header text */
+.header-text {
+    flex: 0 1 auto;
+    max-width: 650px;
+}
+
+.site-header h1 {
+    margin: 0 0 8px;
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    line-height: 1.25;
+}
+
+.site-header p {
+    margin: 0;
+    color: #e0e9f3;
+    font-size: 1rem;
+}
+
+/* Images beside the text */
+.header-logo {
+    position: static;
+    flex-shrink: 0;
+    transform: none;
+    width: 85px;
+    height: 85px;
+    object-fit: contain;
+    padding: 4px;
+    background: white;
+    border: 2px solid #d6ad55;
+    border-radius: 50%;
+}
+
+.left-logo,
+.right-logo {
+    margin: 0;
+}
+
+/* Mobile responsive design */
+@media (max-width: 600px) {
+    .site-header {
+        gap: 10px;
+        padding: 24px 12px;
+    }
+
+    .header-logo {
+        width: 55px;
+        height: 55px;
+    }
+
+    .site-header h1 {
+        font-size: 1.25rem;
+    }
+
+    .site-header p {
+        font-size: 0.8rem;
+    }
+}
+
+
+
+/* Contact information cards */
+#contact .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 18px;
+    padding: 16px;
+    background: #f7f9fc;
+    border: 1px solid #e1e8f0;
+    border-radius: 12px;
+    transition: 0.25s ease;
+}
+
+#contact .contact-item:hover {
+    background: #edf3fa;
+    transform: translateY(-2px);
+}
+
+/* Icon container */
+#contact .contact-icon {
+    width: 50px;
+    height: 50px;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    color: white;
+    font-size: 25px;
+}
+
+/* Facebook icon */
+#contact .facebook-icon {
+    background: #1877F2;
+}
+
+/* Email icon */
+#contact .email-icon {
+    background: #c7463d;
+}
+
+/* Contact text */
+#contact .contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    min-width: 0;
+}
+
+#contact .contact-details strong {
+    color: #12345a;
+}
+
+#contact .contact-details a {
+    color: #1767a5;
+    font-weight: 600;
+    text-decoration: none;
+    overflow-wrap: anywhere;
+}
+
+#contact .contact-details a:hover {
+    text-decoration: underline;
+}
+
+/* Mobile responsive */
+@media (max-width: 480px) {
+    #contact .contact-item {
+        gap: 12px;
+        padding: 12px;
+    }
+
+    #contact .contact-icon {
+        width: 42px;
+        height: 42px;
+        font-size: 21px;
+    }
+}
+
+/* Phone contact icon */
+#contact .phone-icon {
+    background: #218838;
+}
+
+/* Optional: phone link hover effect */
+#contact .contact-details a[href^="tel:"]:hover {
+    color: #218838;
+}
+
+
+/* =========================================================
+   RESPONSIVE OVERRIDES — desktop, laptop, tablet and mobile
+   Keep these rules at the END of this stylesheet.
+========================================================= */
+
+/* Prevent accidental horizontal overflow and improve text sizing */
+html {
+    scroll-padding-top: 24px;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+body {
+    min-width: 0;
+    overflow-wrap: break-word;
+}
+
+img,
+svg,
+video,
+canvas,
+iframe {
+    max-width: 100%;
+}
+
+img {
+    height: auto;
+}
+
+/* Header works with either the generic header or .site-header markup */
+header,
+.site-header {
+    min-width: 0;
+}
+
+.site-header {
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.header-text {
+    min-width: 0;
+}
+
+.header-text h1,
+.site-header h1,
+header h1 {
+    overflow-wrap: anywhere;
+}
+
+.header-logo {
+    max-width: 100%;
+}
+
+/* Flexible navigation: wraps cleanly on smaller screens */
+nav {
+    width: 100%;
+    min-width: 0;
+    flex-wrap: wrap;
+}
+
+nav a {
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    text-align: center;
+}
+
+/* Main content scales with available viewport width */
+.container {
+    width: min(1100px, calc(100% - 2rem));
+}
+
+.card {
+    min-width: 0;
+    overflow-wrap: break-word;
+}
+
+.card > *:first-child {
+    margin-top: 0;
+}
+
+.card > *:last-child {
+    margin-bottom: 0;
+}
+
+ol li,
+ul li {
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+#contact .contact-item {
+    min-width: 0;
+}
+
+#contact .contact-details {
+    flex: 1 1 auto;
+    overflow-wrap: anywhere;
+}
+
+#contact .contact-details a {
+    word-break: break-word;
+}
+
+footer,
+footer p {
+    overflow-wrap: anywhere;
+}
+
+/* Larger screens */
+@media (min-width: 1200px) {
+    .container {
+        width: min(1100px, calc(100% - 3rem));
+    }
+
+    .site-header {
+        gap: clamp(18px, 2vw, 32px);
+    }
+
+    .header-logo {
+        width: clamp(76px, 6vw, 100px);
+        height: clamp(76px, 6vw, 100px);
+    }
+}
+
+/* Tablets and smaller laptops */
+@media (max-width: 900px) {
+    header:not(.site-header) {
+        padding: 48px 20px;
+    }
+
+    .site-header {
+        gap: 14px;
+        padding: 26px 18px;
+    }
+
+    .header-logo {
+        width: 72px;
+        height: 72px;
+    }
+
+    .container {
+        width: calc(100% - 2rem);
+        margin-top: 30px;
+        margin-bottom: 42px;
+    }
+
+    .card {
+        padding: 28px;
+    }
+
+    nav a {
+        flex: 1 1 180px;
+        padding: 14px 12px;
+    }
+}
+
+/* Phones and narrow tablet portrait */
+@media (max-width: 600px) {
+    html {
+        scroll-padding-top: 12px;
+    }
+
+    body {
+        font-size: 15px;
+        line-height: 1.7;
+    }
+
+    header:not(.site-header) {
+        padding: 36px 16px;
+    }
+
+    header:not(.site-header) h1 {
+        font-size: clamp(1.45rem, 6vw, 2rem);
+        letter-spacing: -0.3px;
+    }
+
+    header:not(.site-header) p {
+        font-size: 0.95rem;
+    }
+
+    .site-header {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        padding: 20px 12px;
+    }
+
+    .header-logo {
+        width: clamp(44px, 12vw, 60px);
+        height: clamp(44px, 12vw, 60px);
+    }
+
+    .header-text {
+        flex: 1 1 180px;
+        max-width: 100%;
+    }
+
+    .site-header h1 {
+        font-size: clamp(1.05rem, 4.6vw, 1.45rem);
+        line-height: 1.25;
+        letter-spacing: 0;
+    }
+
+    .site-header p {
+        font-size: clamp(0.72rem, 2.8vw, 0.9rem);
+        line-height: 1.45;
+    }
+
+    nav {
+        position: relative;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0;
+    }
+
+    nav a {
+        display: flex;
+        width: 100%;
+        min-height: 44px;
+        padding: 11px 8px;
+        font-size: 0.82rem;
+        line-height: 1.35;
+    }
+
+    nav a::after {
+        left: 10px;
+        right: 10px;
+    }
+
+    .container {
+        width: calc(100% - 24px);
+        margin: 20px auto 30px;
+    }
+
+    .card {
+        padding: clamp(16px, 4.5vw, 22px);
+        margin-bottom: 16px;
+        border-radius: 11px;
+    }
+
+    h2 {
+        font-size: clamp(1.2rem, 5vw, 1.45rem);
+        line-height: 1.35;
+        margin-bottom: 18px;
+    }
+
+    ol li {
+        padding: 14px 12px 14px 50px;
+    }
+
+    ol li::before {
+        left: 10px;
+        top: 15px;
+        width: 28px;
+        height: 28px;
+        font-size: 0.72rem;
+    }
+
+    ul li {
+        padding-left: 23px;
+    }
+
+    .fee-badge {
+        white-space: normal;
+        overflow-wrap: anywhere;
+        margin: 3px 2px;
+    }
+
+    #contact p strong {
+        min-width: 0;
+    }
+
+    #contact .contact-item {
+        align-items: flex-start;
+        gap: 11px;
+        padding: 12px;
+    }
+
+    #contact .contact-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+        border-radius: 10px;
+    }
+
+    #contact .contact-details strong {
+        line-height: 1.4;
+    }
+
+    footer {
+        padding: 22px 14px;
+    }
+
+    footer p {
+        font-size: 0.82rem;
+    }
+}
+
+/* Very narrow phones */
+@media (max-width: 360px) {
+    .site-header {
+        gap: 7px;
+        padding: 16px 8px;
+    }
+
+    .header-logo {
+        width: 38px;
+        height: 38px;
+    }
+
+    .site-header h1 {
+        font-size: 1rem;
+    }
+
+    .site-header p {
+        font-size: 0.7rem;
+    }
+
+    nav a {
+        padding: 10px 5px;
+        font-size: 0.76rem;
+    }
+
+    .container {
+        width: calc(100% - 16px);
+    }
+
+    .card {
+        padding: 14px 12px;
+    }
+
+    #contact .contact-item {
+        gap: 8px;
+        padding: 10px;
+    }
+
+    #contact .contact-icon {
+        width: 34px;
+        height: 34px;
+        font-size: 17px;
+    }
+}
+
+/* Keyboard focus and reduced motion */
+a:focus-visible {
+    outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+
+/* ==========================================================
+   RESPONSIVE LAYOUT FOR ALL COMMON SCREEN SIZES / RATIOS
+   Append-only overrides: desktop, laptop, tablet, mobile,
+   portrait, landscape, and narrow screens.
+========================================================== */
+
+/* Fluid sizing and horizontal overflow protection */
+html {
+    width: 100%;
+    max-width: 100%;
+    scroll-padding-top: 1rem;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+body {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow-x: clip;
+}
+
+*, *::before, *::after {
+    min-width: 0;
+}
+
+img, picture, video, canvas, iframe, svg {
+    max-width: 100%;
+}
+
+img, video {
+    height: auto;
+}
+
+h1, h2, h3, h4, p, a, li, strong, span {
+    overflow-wrap: anywhere;
+}
+
+/* Keep page content fluid rather than fixed to one screen width */
+.container {
+    width: min(1100px, calc(100% - clamp(1rem, 4vw, 3rem)));
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.card {
+    max-width: 100%;
+}
+
+/* Responsive heading sizes adapt smoothly to viewport width */
+header h1,
+.site-header h1 {
+    font-size: clamp(1.25rem, 3.4vw, 3.1rem);
+    line-height: 1.2;
+}
+
+header p,
+.site-header p {
+    font-size: clamp(0.8rem, 1.35vw, 1.08rem);
+    line-height: 1.55;
+}
+
+h2 {
+    font-size: clamp(1.2rem, 2.4vw, 1.8rem);
+}
+
+/* Header: supports both <header> and .site-header markup */
+.site-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: clamp(0.5rem, 2vw, 1.25rem);
+    padding: clamp(1rem, 3vw, 2rem);
+}
+
+.header-text {
+    flex: 1 1 16rem;
+    min-width: 0;
+    max-width: 650px;
+}
+
+.header-logo {
+    display: block;
+    flex: 0 1 auto;
+    width: clamp(2.5rem, 7vw, 6.25rem);
+    height: clamp(2.5rem, 7vw, 6.25rem);
+    object-fit: contain;
+}
+
+/* Navigation naturally wraps when there is not enough space */
+nav {
+    width: 100%;
+    min-width: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+}
+
+nav a {
+    flex: 0 1 auto;
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    text-align: center;
+}
+
+/* Contact blocks and long links remain inside their cards */
+#contact .contact-item {
+    display: flex;
+    align-items: center;
+    max-width: 100%;
+    min-width: 0;
+}
+
+#contact .contact-icon {
+    flex: 0 0 auto;
+}
+
+#contact .contact-details {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+#contact .contact-details a,
+#contact p a {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+.fee-badge {
+    white-space: normal;
+    max-width: 100%;
+}
+
+/* Landscape orientation: avoid oversized vertical padding */
+@media (orientation: landscape) and (max-height: 500px) {
+    header {
+        padding-top: clamp(1rem, 4vh, 2rem);
+        padding-bottom: clamp(1rem, 4vh, 2rem);
+    }
+
+    .site-header {
+        min-height: 0;
+        padding-top: 0.9rem;
+        padding-bottom: 0.9rem;
+    }
+
+    .header-logo {
+        width: clamp(2.5rem, 10vh, 5rem);
+        height: clamp(2.5rem, 10vh, 5rem);
+    }
+}
+
+/* Medium screens: tablets and compact laptop windows */
+@media (max-width: 900px) {
+    header:not(.site-header) {
+        padding: clamp(2rem, 6vw, 3.25rem) 1.25rem;
+    }
+
+    .site-header {
+        gap: 0.75rem;
+    }
+
+    .container {
+        margin-top: 1.75rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .card {
+        padding: clamp(1.25rem, 3vw, 1.75rem);
+        margin-bottom: 1.25rem;
+    }
+
+    nav a {
+        flex: 1 1 10rem;
+        padding: 0.8rem 0.65rem;
+    }
+}
+
+/* Phones and narrow portrait tablets */
+@media (max-width: 600px) {
+    body {
+        font-size: 15px;
+        line-height: 1.7;
+    }
+
+    header:not(.site-header) {
+        padding: 2rem 1rem;
+    }
+
+    .site-header {
+        gap: 0.5rem;
+        padding: 1rem 0.65rem;
+    }
+
+    .header-text {
+        flex: 1 1 8rem;
+        max-width: 100%;
+    }
+
+    .header-logo {
+        width: clamp(2.25rem, 11vw, 3.5rem);
+        height: clamp(2.25rem, 11vw, 3.5rem);
+    }
+
+    nav {
+        position: relative;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    nav a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        min-height: 44px;
+        padding: 0.65rem 0.4rem;
+        font-size: clamp(0.72rem, 2.8vw, 0.85rem);
+        line-height: 1.35;
+    }
+
+    .container {
+        width: calc(100% - 1rem);
+        margin-top: 1.25rem;
+        margin-bottom: 1.75rem;
+    }
+
+    .card {
+        padding: clamp(0.85rem, 4vw, 1.3rem);
+        margin-bottom: 1rem;
+        border-radius: 11px;
+    }
+
+    h2 {
+        margin-bottom: 1rem;
+        padding-bottom: 0.7rem;
+    }
+
+    ol li {
+        padding: 0.85rem 0.7rem 0.85rem 3.1rem;
+    }
+
+    ol li::before {
+        left: 0.6rem;
+        top: 0.85rem;
+        width: 1.75rem;
+        height: 1.75rem;
+    }
+
+    ul li {
+        padding-left: 1.45rem;
+    }
+
+    #contact p strong {
+        display: block;
+        min-width: 0;
+        margin-bottom: 0.15rem;
+    }
+
+    #contact .contact-item {
+        align-items: flex-start;
+        gap: 0.7rem;
+        padding: 0.75rem;
+    }
+
+    #contact .contact-icon {
+        width: 2.5rem;
+        height: 2.5rem;
+        font-size: 1.2rem;
+    }
+
+    footer {
+        padding: 1.4rem 0.8rem;
+    }
+}
+
+/* Extra narrow phones */
+@media (max-width: 360px) {
+    .site-header {
+        gap: 0.35rem;
+        padding: 0.8rem 0.4rem;
+    }
+
+    .header-logo {
+        width: 2rem;
+        height: 2rem;
+    }
+
+    .site-header h1,
+    header h1 {
+        font-size: clamp(1rem, 5vw, 1.25rem);
+        letter-spacing: 0;
+    }
+
+    nav a {
+        padding: 0.55rem 0.25rem;
+        font-size: 0.72rem;
+    }
+
+    .container {
+        width: calc(100% - 0.65rem);
+    }
+
+    .card {
+        padding: 0.7rem 0.6rem;
+    }
+
+    #contact .contact-item {
+        gap: 0.5rem;
+        padding: 0.6rem;
+    }
+
+    #contact .contact-icon {
+        width: 2.1rem;
+        height: 2.1rem;
+        font-size: 1rem;
+    }
+}
+
+/* Accessibility: motion reduction */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *, *::before, *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* =========================================================
+   FINAL FLUID RESPONSIVE LAYER
+   Tuned for small phones, large phones, tablets, laptops,
+   desktops, ultrawide displays, and landscape orientation.
+   ========================================================= */
+
+:root {
+    --page-gutter: clamp(0.75rem, 3.5vw, 2rem);
+    --content-width: 74rem;
+    --card-padding: clamp(0.9rem, 2.2vw, 1.8rem);
+    --section-space: clamp(1.25rem, 3.5vw, 2.5rem);
+}
+
+html {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: clip;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+body {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+main, section, article, aside, header, footer, nav,
+.container, .card, .site-header, .header-text,
+#contact, #contact .contact-item, #contact .contact-details {
+    min-width: 0;
+    max-width: 100%;
+}
+
+.container {
+    width: min(var(--content-width), calc(100% - (var(--page-gutter) * 2)));
+    margin-inline: auto;
+}
+
+img, picture, video, canvas, iframe, svg {
+    max-width: 100%;
+}
+
+img, video, iframe {
+    height: auto;
+}
+
+h1, h2, h3, h4, p, li, a, strong, span, small, label {
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+h1 {
+    font-size: clamp(1.45rem, 3vw, 2.5rem);
+    line-height: 1.2;
+}
+
+h2 {
+    font-size: clamp(1.2rem, 2.2vw, 1.75rem);
+    line-height: 1.3;
+}
+
+p, li {
+    line-height: 1.65;
+}
+
+.card {
+    padding: var(--card-padding);
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: clamp(0.25rem, 1vw, 0.75rem);
+}
+
+nav a {
+    max-width: 100%;
+    white-space: normal;
+    text-align: center;
+}
+
+.site-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(0.5rem, 2vw, 1.25rem);
+    padding-inline: var(--page-gutter);
+}
+
+.header-text {
+    flex: 1 1 14rem;
+}
+
+.header-logo, .right-logo {
+    flex: 0 1 auto;
+    max-width: clamp(2.5rem, 8vw, 6rem);
+    height: auto;
+    object-fit: contain;
+}
+
+#contact .contact-item {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 0.75rem;
+}
+
+#contact .contact-details {
+    flex: 1 1 12rem;
+}
+
+#contact .contact-details a,
+#contact p a {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+/* Tablet and compact laptop */
+@media (max-width: 900px) {
+    header {
+        padding: clamp(2rem, 6vw, 3.5rem) var(--page-gutter);
+    }
+
+    .container {
+        width: calc(100% - (var(--page-gutter) * 2));
+    }
+
+    .card {
+        margin-inline: 0;
+    }
+}
+
+/* Phones and portrait tablets */
+@media (max-width: 600px) {
+    body {
+        font-size: 0.95rem;
+    }
+
+    header {
+        padding-block: 2rem;
+    }
+
+    header h1, .site-header h1 {
+        font-size: clamp(1.25rem, 6vw, 1.8rem);
+    }
+
+    nav {
+        gap: 0.25rem;
+    }
+
+    nav a {
+        flex: 1 1 auto;
+        padding: 0.55rem 0.45rem;
+    }
+
+    .container {
+        width: calc(100% - 1.25rem);
+    }
+
+    .card {
+        border-radius: 0.75rem;
+    }
+
+    #contact .contact-item {
+        flex-wrap: nowrap;
+    }
+
+    footer {
+        padding-inline: 0.75rem;
+    }
+}
+
+/* Very narrow screens */
+@media (max-width: 360px) {
+    :root {
+        --page-gutter: 0.5rem;
+        --card-padding: 0.7rem;
+    }
+
+    body {
+        font-size: 0.875rem;
+    }
+
+    nav a {
+        flex-basis: 100%;
+    }
+
+    #contact .contact-item {
+        gap: 0.45rem;
+        padding: 0.55rem;
+    }
+}
+
+/* Landscape phones / short viewports */
+@media (orientation: landscape) and (max-height: 500px) {
+    header {
+        padding-block: 1rem;
+    }
+
+    .site-header {
+        padding-block: 0.5rem;
+    }
+
+    html {
+        scroll-padding-top: 1rem;
+    }
+}
+
+/* Large and ultrawide screens: keep readable line lengths */
+@media (min-width: 1400px) {
+    .container {
+        max-width: var(--content-width);
+    }
+}
+
+/* Avoid hover-only behavior on touch devices */
+@media (hover: none) and (pointer: coarse) {
+    nav a, .card, #contact .contact-item {
+        -webkit-tap-highlight-color: transparent;
+    }
+}
+
+/* FINAL HEADER LAYOUT: both logos stay immediately beside the heading.
+   The left logo, office title, and right logo remain on the same row at every viewport width. */
+.site-header {
+    display: grid !important;
+    grid-template-columns: minmax(48px, min(2in, 14vw)) minmax(0, 1fr) minmax(48px, min(2in, 14vw)) !important;
+    grid-template-rows: minmax(0, auto) !important;
+    align-items: center !important;
+    justify-items: center !important;
+    column-gap: clamp(4px, 1.25vw, 18px) !important;
+    row-gap: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+}
+.site-header > .left-logo {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+    align-self: center !important;
+    justify-self: center !important;
+    position: static !important;
+    margin: 0 !important;
+}
+.site-header > .header-text {
+    grid-column: 2 !important;
+    grid-row: 1 !important;
+    align-self: center !important;
+    justify-self: stretch !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    text-align: center;
+}
+.site-header > .right-logo {
+    grid-column: 3 !important;
+    grid-row: 1 !important;
+    align-self: center !important;
+    justify-self: center !important;
+    position: static !important;
+    margin: 0 !important;
+}
+.site-header > .header-logo,
+.site-header > .left-logo,
+.site-header > .right-logo {
+    display: block !important;
+    width: min(2in, 14vw) !important;
+    height: auto !important;
+    max-width: 100% !important;
+    max-height: min(2in, 14vw) !important;
+    min-width: 0 !important;
+    object-fit: contain !important;
+}
+.site-header .header-text h1,
+.site-header .header-text p {
+    width: 100%;
+    max-width: 100%;
+    margin-inline: auto;
+    overflow-wrap: anywhere;
+    word-break: normal;
+}
+@media (max-width: 520px) {
+    .site-header {
+        grid-template-columns: clamp(34px, 10vw, 1in) minmax(0, 1fr) clamp(34px, 10vw, 1in) !important;
+        column-gap: 5px !important;
+        padding-inline: 6px !important;
+    }
+    .site-header > .header-logo,
+    .site-header > .left-logo,
+    .site-header > .right-logo {
+        width: clamp(34px, 10vw, 1in) !important;
+        max-height: clamp(34px, 10vw, 1in) !important;
+    }
+    .site-header .header-text h1,
+    .site-header h1 {
+        font-size: clamp(0.85rem, 3.8vw, 1.25rem) !important;
+        line-height: 1.15;
+        letter-spacing: 0 !important;
+    }
+    .site-header .header-text p,
+    .site-header p {
+        font-size: clamp(0.62rem, 2.4vw, 0.85rem) !important;
+        line-height: 1.25;
+    }
+}
+
+/* FINAL OVERRIDE: logos are up to 2 inches (192 CSS px) beside the office heading.
+   They scale down only when the viewport is too narrow, keeping all three on one row. */
+
+
+.site-header {
+    display: grid !important;
+    grid-template-columns: minmax(65px, 1fr) auto minmax(65px, 1fr) !important;
+    align-items: center !important;
+    justify-items: center !important;
+    column-gap: 96px !important;
+    row-gap: 8px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+.site-header > .left-logo {
+    grid-column: 1;
+    justify-self: end !important;
+    margin-right: 0 !important;
+}
+
+.site-header > .header-text {
+    grid-column: 2;
+    text-align: center !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+}
+
+.site-header > .right-logo {
+    grid-column: 3;
+    justify-self: start !important;
+    margin-left: 0 !important;
+}
+
+/* Larger responsive logos on desktop */
+.site-header .header-logo {
+    display: block !important;
+    width: clamp(65px, 8vw, 110px) !important;
+    height: auto !important;
+    max-width: 100% !important;
+    max-height: 110px !important;
+    object-fit: contain !important;
+    position: static !important;
+}
+
+/* Tablets and mobile phones */
+@media (max-width: 600px) {
+    .site-header {
+        grid-template-columns:
+            minmax(42px, 1fr)
+            minmax(0, auto)
+            minmax(42px, 1fr) !important;
+        column-gap: 8px !important;
+        row-gap: 5px !important;
+        padding-inline: 5px !important;
+    }
+
+    .site-header .header-logo {
+        width: clamp(42px, 10vw, 60px) !important;
+        height: auto !important;
+        max-height: 60px !important;
+    }
+
+    .site-header h1 {
+        font-size: clamp(14px, 3.8vw, 21px) !important;
+        line-height: 1.2 !important;
+        overflow-wrap: anywhere;
+    }
+
+    .site-header p {
+        font-size: clamp(10px, 2.8vw, 14px) !important;
+        line-height: 1.3 !important;
+        overflow-wrap: anywhere;
+    }
+}
